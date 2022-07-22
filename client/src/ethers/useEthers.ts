@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ethers, Contract } from "ethers";
-import { address, abi, privateKey } from "./config";
+import { address, abi, privateKey, network } from "./config";
 
 const useEffectOnceImplement: typeof useEffect = (effect, deps?) => {
   useEffect(() => {
@@ -26,7 +26,7 @@ const useEffectOnce =
 // =======================================
 
 const createContract = (): Contract => {
-  const provider = ethers.getDefaultProvider("http://127.0.0.1:8545");
+  const provider = ethers.getDefaultProvider(network);
 
   const wallet = new ethers.Wallet(privateKey, provider);
 
